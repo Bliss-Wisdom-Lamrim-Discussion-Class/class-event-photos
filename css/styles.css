@@ -234,7 +234,77 @@ body {
   padding: 2.5rem 0 5rem 0;
 }
 
-/* Section Header (Commit Card Header) */
+/* [層級 1] 頂部快速相簿目錄索引 Section */
+.album-index-section {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.album-index-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.8rem;
+}
+
+.album-index-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.album-index-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.album-index-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.album-index-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: calc(var(--border-radius) - 4px);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.album-index-item:hover {
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.album-index-date {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-primary);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+/* [層級 2] Section Header (Commit Card Header) */
 .commit-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -243,6 +313,7 @@ body {
   margin-bottom: 3rem;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow var(--transition-speed);
+  scroll-margin-top: 90px; /* 支援頂部 Sticky Header 的定位偏移 */
 }
 
 .commit-card-header {

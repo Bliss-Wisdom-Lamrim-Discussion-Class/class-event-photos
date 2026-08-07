@@ -37,14 +37,20 @@
   <main class="main-content">
     <div class="container">
       
-      <!-- 相簿展演區 (依 Commit 分頁與渲染) -->
-      <div id="gallery-container">
-        <!-- JS 將自動填入相簿內容 -->
-      </div>
+      <!-- [層級 1] 頂部快速相簿目錄索引 -->
+      <section class="album-index-section">
+        <div class="album-index-header">
+          <h2>📚 相簿目錄索引 (按上傳日期排序)</h2>
+          <span class="album-index-subtitle">點擊標題可直接跳轉至該次相簿</span>
+        </div>
+        <div id="album-index-nav" class="album-index-nav">
+          <!-- JS 將自動填入頂部相簿索引連結 -->
+        </div>
+      </section>
 
-      <!-- 分頁導覽元件 -->
-      <div id="pagination" class="pagination-wrapper">
-        <!-- JS 將自動填入分頁按鈕 -->
+      <!-- [層級 2] 主頁面縱向直排相簿與縮圖 (最新在上) -->
+      <div id="gallery-container" class="gallery-container">
+        <!-- JS 將自動填入所有 Commit 相簿 -->
       </div>
 
     </div>

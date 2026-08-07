@@ -105,6 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // DOM Elements
+  const galleryContainer = document.getElementById('gallery-container');
+  const albumIndexNav = document.getElementById('album-index-nav');
+  const themeButtons = document.querySelectorAll('.theme-btn');
+  const navHomeBtn = document.getElementById('nav-home-btn');
+  const brandHomeBtn = document.getElementById('brand-home-btn');
+
   // 載入 JSON 資料
   async function loadGalleryData() {
     try {
@@ -120,80 +127,103 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      renderAlbumIndex();
       renderGallery();
-      renderPagination();
     } catch (error) {
       console.error('Failed to load gallery-data.json:', error);
       renderErrorState();
     }
   }
 
-  // 渲染相簿（依 Commit 分頁）
+  // [層級 1] 渲染頂部相簿目錄索引 (按日期/Title 排序清單)
+  function renderAlbumIndex() {
+    if (!albumIndexNav) return;
+    albumIndexNav.innerHTML = '';
+
+    state.commits.forEach((commit, cIdx) => {
+      const anchorId = `album-commit-${cIdx}`;
+      const indexLink = document.createElement('a');
+      indexLink.className = 'album-index-item';
+      indexLink.href = `#${anchorId}`;
+      indexLink.innerHTML = `
+        <span>📌 ${escapeHtml(commit.commit_message || '相簿 ' + (cIdx + 1))}</span>
+        <span class="album-index-date">🕒 ${escapeHtml(commit.date || '')}</span>
+      `;
+
+      indexLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetElement = document.getElementById(anchorId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+
+      albumIndexNav.appendChild(indexLink);
+    });
+  }
+
+  // [層級 2] 渲染主頁面所有 Commit 相簿 (按日期最新至最舊縱向直排)
   function renderGallery() {
     galleryContainer.innerHTML = '';
 
-    const totalPages = Math.ceil(state.commits.length / state.itemsPerPage);
-    if (state.currentPage < 1) state.currentPage = 1;
-    if (state.currentPage > totalPages) state.currentPage = totalPages;
+    state.commits.forEach((commit, commitIndex) => {
+      const anchorId = `album-commit-${commitIndex}`;
 
-    const commitIndex = state.currentPage - 1;
-    const commit = state.commits[commitIndex];
+      // 建立 Commit Card 容器
+      const card = document.createElement('div');
+      card.className = 'commit-card';
+      card.id = anchorId;
 
-    if (!commit) return;
-
-    // 建立 Commit Card 容器
-    const card = document.createElement('div');
-    card.className = 'commit-card';
-
-    // Commit Header: 標題 = commit_message
-    const headerHtml = `
-      <div class="commit-card-header">
-        <div class="commit-title-group">
-          <span class="commit-badge">${escapeHtml(commit.short_hash || 'commit')}</span>
-          <h2 class="commit-title">${escapeHtml(commit.commit_message || '無 Commit 訊息')}</h2>
-        </div>
-        <div class="commit-meta">
-          <span class="commit-meta-item">👤 ${escapeHtml(commit.author || 'Contributor')}</span>
-          <span class="commit-meta-item">🕒 ${escapeHtml(commit.date || '')}</span>
-          <span class="commit-meta-item">🖼️ ${commit.photos ? commit.photos.length : 0} 張照片</span>
-        </div>
-      </div>
-    `;
-
-    // Photo Grid
-    let gridHtml = '<div class="photo-grid">';
-    if (commit.photos && commit.photos.length > 0) {
-      commit.photos.forEach((photo, pIdx) => {
-        const thumbUrl = safeUrl(photo.thumbnail_url);
-        gridHtml += `
-          <div class="photo-card" data-commit-idx="${commitIndex}" data-photo-idx="${pIdx}">
-            <img 
-              src="${escapeHtml(thumbUrl)}" 
-              alt="${escapeHtml(photo.caption || photo.filename)}" 
-              loading="lazy"
-              onerror="this.onerror=null; this.parentElement.innerHTML='<div class=photo-fallback>🖼️<span>${escapeHtml(photo.filename)}</span></div>';"
-            />
-            <div class="photo-overlay">
-              <span class="photo-caption">${escapeHtml(photo.caption || photo.filename)}</span>
-            </div>
+      // Commit Header: 標題 = commit_message
+      const headerHtml = `
+        <div class="commit-card-header">
+          <div class="commit-title-group">
+            <span class="commit-badge">${escapeHtml(commit.short_hash || 'commit')}</span>
+            <h2 class="commit-title">${escapeHtml(commit.commit_message || '無 Commit 訊息')}</h2>
           </div>
-        `;
-      });
-    } else {
-      gridHtml += '<div style="padding: 2rem; text-align: center; color: var(--text-muted);">此 Commit 未包含照片</div>';
-    }
-    gridHtml += '</div>';
+          <div class="commit-meta">
+            <span class="commit-meta-item">👤 ${escapeHtml(commit.author || 'Contributor')}</span>
+            <span class="commit-meta-item">🕒 ${escapeHtml(commit.date || '')}</span>
+            <span class="commit-meta-item">🖼️ ${commit.photos ? commit.photos.length : 0} 張照片</span>
+          </div>
+        </div>
+      `;
 
-    card.innerHTML = headerHtml + gridHtml;
-    galleryContainer.appendChild(card);
+      // Photo Grid
+      let gridHtml = '<div class="photo-grid">';
+      if (commit.photos && commit.photos.length > 0) {
+        commit.photos.forEach((photo, pIdx) => {
+          const thumbUrl = safeUrl(photo.thumbnail_url);
+          gridHtml += `
+            <div class="photo-card" data-commit-idx="${commitIndex}" data-photo-idx="${pIdx}">
+              <img 
+                src="${escapeHtml(thumbUrl)}" 
+                alt="${escapeHtml(photo.caption || photo.filename)}" 
+                loading="lazy"
+                onerror="this.onerror=null; this.parentElement.innerHTML='<div class=photo-fallback>🖼️<span>${escapeHtml(photo.filename)}</span></div>';"
+              />
+              <div class="photo-overlay">
+                <span class="photo-caption">${escapeHtml(photo.caption || photo.filename)}</span>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        gridHtml += '<div style="padding: 2rem; text-align: center; color: var(--text-muted);">此 Commit 未包含照片</div>';
+      }
+      gridHtml += '</div>';
 
-    // 綁定照片點擊事件 (Lightbox)
-    const photoCards = card.querySelectorAll('.photo-card');
-    photoCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const cIdx = parseInt(card.getAttribute('data-commit-idx'), 10);
-        const pIdx = parseInt(card.getAttribute('data-photo-idx'), 10);
-        openLightbox(cIdx, pIdx);
+      card.innerHTML = headerHtml + gridHtml;
+      galleryContainer.appendChild(card);
+
+      // 綁定照片點擊事件 (Lightbox)
+      const photoCards = card.querySelectorAll('.photo-card');
+      photoCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const cIdx = parseInt(card.getAttribute('data-commit-idx'), 10);
+          const pIdx = parseInt(card.getAttribute('data-photo-idx'), 10);
+          openLightbox(cIdx, pIdx);
+        });
       });
     });
   }
