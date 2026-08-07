@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T03:10:43Z",
+  "updated_at": "2026-08-07T03:19:42Z",
   "total_commits": 2,
   "commits": [
     {
@@ -7,6 +7,7 @@
       "short_hash": "2026-08-",
       "author": "Contributor",
       "date": "2026-08-07 00:00:00",
+      "mtime": 1786072777.6613245,
       "commit_message": "📸 20170907 班級活動精彩相片集錦",
       "photos": [
         {
@@ -112,6 +113,7 @@
       "short_hash": "2026-08-",
       "author": "Contributor",
       "date": "2026-08-07 00:00:00",
+      "mtime": 1786072777.6523244,
       "commit_message": "106_8_3-9_7日幸福與智慧課程",
       "photos": [
         {
