@@ -68,18 +68,31 @@ def organize_loose_photos():
     commit_date = datetime.now().strftime("%Y-%m-%d")
     commit_msg = "New Photos"
     
-    try:
-        cmd = ["git", "log", "-1", "--pretty=format:%cd|%s", "--date=format:%Y-%m-%d"]
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        if result.stdout.strip():
-            parts = result.stdout.strip().split("|", 1)
-            commit_date = parts[0]
-            if len(parts) > 1 and parts[1].strip():
-                raw_msg = parts[1].strip()
-                if not raw_msg.startswith("🤖"):
-                    commit_msg = raw_msg
-    except Exception as e:
-        print(f"Failed to fetch recent git commit info: {e}")
+    # 嘗試從 LINE 相簿檔名 (例: LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg) 提取相簿標題
+    line_titles = set()
+    for photo_name in loose_photos:
+        m = re.search(r'LINE_ALBUM_(.+?)_\d+', photo_name, re.IGNORECASE)
+        if m:
+            raw_title = m.group(1)
+            # 整理標題 (例: 10683-97日幸福與智慧課程 -> 106_8_3-9_7日幸福與智慧課程)
+            clean_title = re.sub(r'(\d{3})(\d)(\d)-(\d)(\d)', r'\1_\2_\3-\4_\5', raw_title)
+            line_titles.add(clean_title)
+            
+    if line_titles:
+        commit_msg = " ".join(sorted(list(line_titles)))
+    else:
+        try:
+            cmd = ["git", "log", "-1", "--pretty=format:%cd|%s", "--date=format:%Y-%m-%d"]
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            if result.stdout.strip():
+                parts = result.stdout.strip().split("|", 1)
+                commit_date = parts[0]
+                if len(parts) > 1 and parts[1].strip():
+                    raw_msg = parts[1].strip()
+                    if not raw_msg.startswith("🤖"):
+                        commit_msg = raw_msg
+        except Exception as e:
+            print(f"Failed to fetch recent git commit info: {e}")
 
     clean_msg = sanitize_folder_name(commit_msg)
     subfolder_name = f"{commit_date}_{clean_msg}"
@@ -100,7 +113,7 @@ def organize_loose_photos():
         print(f"Moved: {src_path} -> {dst_path}")
 
 def build_gallery_data():
-    """掃描 photos/ 目錄及其子目錄，生成 gallery-data.json"""
+    """掃描 photos/ 目錄及其子目錄，生成 gallery-data.json (最新相簿在最上方)"""
     if not os.path.exists(PHOTOS_DIR):
         return []
 
@@ -109,29 +122,34 @@ def build_gallery_data():
     for root, dirs, files in os.walk(PHOTOS_DIR):
         rel_root = os.path.relpath(root, PHOTOS_DIR)
         
+        # 跳過 photos 根目錄本身 (除非無任何子目錄)
         if rel_root == ".":
-            section_title = "📸 相片總集錦"
-            section_key = "root"
-            section_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            continue
+
+        folder_name = os.path.basename(root)
+        parts = folder_name.split("_", 1)
+        if len(parts) == 2 and re.match(r'^\d{4}-\d{2}-\d{2}$', parts[0]):
+            section_date = f"{parts[0]} 00:00:00"
+            section_title = parts[1]
         else:
-            folder_name = os.path.basename(root)
-            parts = folder_name.split("_", 1)
-            if len(parts) == 2 and re.match(r'^\d{4}-\d{2}-\d{2}$', parts[0]):
-                section_date = f"{parts[0]} 00:00:00"
-                section_title = parts[1]
-            else:
-                section_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                section_title = folder_name
-            section_key = folder_name
+            section_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            section_title = folder_name
+        section_key = folder_name
 
         valid_photos = []
+        max_photo_mtime = 0
+
         for filename in sorted(files):
             ext = os.path.splitext(filename)[1].lower()
             if ext in ALLOWED_EXTENSIONS and filename != ".gitkeep":
+                full_photo_path = os.path.join(root, filename)
+                photo_mtime = os.path.getmtime(full_photo_path)
+                if photo_mtime > max_photo_mtime:
+                    max_photo_mtime = photo_mtime
+
                 photo_rel_path = os.path.join("photos", rel_root, filename).replace("\\", "/")
                 thumb_rel_path = os.path.join("thumbnails", rel_root, filename).replace("\\", "/")
                 
-                full_photo_path = os.path.join(root, filename)
                 full_thumb_path = os.path.join(THUMBNAILS_DIR, rel_root, filename)
                 if not os.path.exists(full_thumb_path):
                     generate_thumbnail(full_photo_path, full_thumb_path)
@@ -144,17 +162,19 @@ def build_gallery_data():
                 })
 
         if valid_photos:
+            folder_mtime = max_photo_mtime or os.path.getmtime(root)
             commits_map[section_key] = {
                 "commit_hash": section_key,
                 "short_hash": section_key[:8] if len(section_key) >= 8 else section_key,
                 "author": "Contributor",
                 "date": section_date,
+                "mtime": folder_mtime,
                 "commit_message": section_title,
                 "photos": valid_photos
             }
 
-    sorted_keys = sorted(commits_map.keys(), reverse=True)
-    sorted_commits = [commits_map[k] for k in sorted_keys]
+    # 依照相簿照片/目錄最新修改時間 (mtime) 由最新到最舊 (reverse=True) 排序
+    sorted_commits = sorted(commits_map.values(), key=lambda x: x.get("mtime", 0), reverse=True)
     
     return sorted_commits
 
