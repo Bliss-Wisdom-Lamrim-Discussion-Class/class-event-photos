@@ -136,6 +136,24 @@ def build_gallery_data():
             section_title = folder_name
         section_key = folder_name
 
+        # 從標題解析真實活動日期時間戳記 (例如 20170907 -> 2017-09-07, 106_8_3 -> 民國106年/2017-08-03)
+        sort_timestamp = 0
+        date_match = re.search(r'(20\d{2})(\d{2})(\d{2})', section_title)
+        if date_match:
+            try:
+                dt = datetime(int(date_match.group(1)), int(date_match.group(2)), int(date_match.group(3)))
+                sort_timestamp = dt.timestamp()
+            except Exception:
+                pass
+        else:
+            roc_match = re.search(r'106_(\d+)_(\d+)', section_title)
+            if roc_match:
+                try:
+                    dt = datetime(2017, int(roc_match.group(1)), int(roc_match.group(2)))
+                    sort_timestamp = dt.timestamp()
+                except Exception:
+                    pass
+
         valid_photos = []
         max_photo_mtime = 0
 
