@@ -151,14 +151,15 @@ def build_gallery_data():
             if c_msg.startswith("🤖") or "[skip ci]" in c_msg or "Automated" in c_msg:
                 continue
 
-            # 搜尋此 Commit Message 對應的相簿資料夾
-            clean_msg = sanitize_folder_name(c_msg)
+            # 搜尋此 Commit Message 對應的相簿資料夾 (使用純文字比對防止 - 與 _ 差異造成不匹配)
+            raw_c_msg_clean = re.sub(r'[^\w\u4e00-\u9fff]', '', c_msg)
             matched_folder = None
             
             for folder_name in albums_dict.keys():
                 if folder_name in processed_folders:
                     continue
-                if clean_msg in folder_name or folder_name in c_msg:
+                folder_clean = re.sub(r'[^\w\u4e00-\u9fff]', '', folder_name)
+                if raw_c_msg_clean and (raw_c_msg_clean in folder_clean or folder_clean in raw_c_msg_clean):
                     matched_folder = folder_name
                     break
 
@@ -198,7 +199,7 @@ def build_gallery_data():
     except Exception as e:
         print(f"Error fetching git log: {e}")
 
-    # 3. 若有未於 git log 中被匹配到的新目錄，放在最上方
+    # 3. 若有未於 git log 中被匹配到的新目錄
     for folder_name, folder_path in albums_dict.items():
         if folder_name not in processed_folders:
             parts = folder_name.split("_", 1)
@@ -227,7 +228,7 @@ def build_gallery_data():
                     })
 
             if valid_photos:
-                commits_list.insert(0, {
+                commits_list.append({
                     "commit_hash": folder_name,
                     "short_hash": folder_name[:8],
                     "author": "Contributor",
@@ -235,6 +236,9 @@ def build_gallery_data():
                     "commit_message": section_title,
                     "photos": valid_photos
                 })
+
+    # 4. 強制按日期時間 (date) 倒序排列 (最新時間如 11:09:56 排在 03:43:21 上方)
+    commits_list.sort(key=lambda x: x.get("date", ""), reverse=True)
 
     return commits_list
 
