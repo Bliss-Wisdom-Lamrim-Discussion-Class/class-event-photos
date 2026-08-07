@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const albumIndexNav = document.getElementById('album-index-nav');
 
-  // 載入 JSON 資料
+  // 載入 JSON 資料 (支援拆解後的子相簿 gallery-data.json 檔案)
   async function loadGalleryData() {
     try {
       const response = await fetch('gallery-data.json?t=' + Date.now());
@@ -115,12 +115,37 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       state.data = await response.json();
-      state.commits = state.data.commits || [];
-      
-      if (state.commits.length === 0) {
+      const rawCommits = state.data.commits || [];
+
+      if (rawCommits.length === 0) {
         renderEmptyState();
         return;
       }
+
+      // 平行載入各個相簿目錄下的子 gallery-data.json 取得 photos 陣列
+      state.commits = await Promise.all(
+        rawCommits.map(async (commit) => {
+          if (commit.photos && commit.photos.length > 0) {
+            return commit;
+          }
+          if (commit.sub_data_url) {
+            try {
+              const subRes = await fetch(safeUrl(commit.sub_data_url) + '?t=' + Date.now());
+              if (subRes.ok) {
+                const subData = await subRes.json();
+                return {
+                  ...commit,
+                  ...subData,
+                  photos: subData.photos || []
+                };
+              }
+            } catch (err) {
+              console.warn(`Failed to fetch sub-json for ${commit.folder_name}:`, err);
+            }
+          }
+          return { ...commit, photos: [] };
+        })
+      );
 
       renderAlbumIndex();
       renderGallery();
