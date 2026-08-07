@@ -21,27 +21,23 @@ def ensure_dirs():
     os.makedirs(THUMBNAILS_DIR, exist_ok=True)
 
 def sanitize_folder_name(name):
-    """將 Commit Message 清理為適合檔名/目錄名的安全字串"""
+    """將 Commit Message 清理為安全合法之子目錄名稱"""
     if not name:
         return "Uncategorized"
-    # 移除非法檔名字元 \ / : * ? " < > |
     clean = re.sub(r'[\/\\\:\*\?\"<>\|]', '_', name)
     clean = clean.strip().strip('.')
-    # 若長度過長則截斷
     if len(clean) > 50:
         clean = clean[:50]
     return clean or "Uncategorized"
 
 def generate_thumbnail(photo_path, thumb_path):
     if Image is None:
-        print(f"Pillow not installed, skipping thumbnail for {photo_path}")
         return
     try:
         thumb_dir = os.path.dirname(thumb_path)
         os.makedirs(thumb_dir, exist_ok=True)
         
         with Image.open(photo_path) as img:
-            # 自動修正 EXIF 方向
             img = ImageOps.exif_transpose(img)
             img.thumbnail(MAX_THUMB_SIZE, Image.Resampling.LANCZOS)
             if img.mode in ("RGBA", "P"):
@@ -52,11 +48,10 @@ def generate_thumbnail(photo_path, thumb_path):
         print(f"Error generating thumbnail for {photo_path}: {e}")
 
 def organize_loose_photos():
-    """自動將散落在 photos/ 根目錄的照片移動至 『YYYY-MM-DD_CommitMessage』子目錄」"""
+    """自動將散落在 photos/ 根目錄的照片移動至『YYYY-MM-DD_CommitMessage』子目錄下"""
     if not os.path.exists(PHOTOS_DIR):
         return
 
-    # 找出 photos/ 根目錄下的照片檔 (不包含子目錄)
     loose_photos = []
     for item in os.listdir(PHOTOS_DIR):
         item_path = os.path.join(PHOTOS_DIR, item)
@@ -69,19 +64,19 @@ def organize_loose_photos():
         print("No loose photos in photos/ root directory.")
         return
 
-    # 取得當前最新 commit 的日期與訊息
     commit_date = datetime.now().strftime("%Y-%m-%d")
     commit_msg = "New Photos"
     
     try:
-        # 嘗試從 Git log 取得最近一次 Commit 的日期與訊息
         cmd = ["git", "log", "-1", "--pretty=format:%cd|%s", "--date=format:%Y-%m-%d"]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         if result.stdout.strip():
             parts = result.stdout.strip().split("|", 1)
             commit_date = parts[0]
             if len(parts) > 1 and parts[1].strip():
-                commit_msg = parts[1].strip()
+                raw_msg = parts[1].strip()
+                if not raw_msg.startswith("🤖"):
+                    commit_msg = raw_msg
     except Exception as e:
         print(f"Failed to fetch recent git commit info: {e}")
 
@@ -96,7 +91,6 @@ def organize_loose_photos():
         src_path = os.path.join(PHOTOS_DIR, photo_name)
         dst_path = os.path.join(target_dir, photo_name)
         
-        # 若目標已存在同名檔，加上 timestamp
         if os.path.exists(dst_path):
             base, ext = os.path.splitext(photo_name)
             dst_path = os.path.join(target_dir, f"{base}_{int(datetime.now().timestamp())}{ext}")
@@ -111,18 +105,14 @@ def build_gallery_data():
 
     commits_map = {}
     
-    # 遍歷 photos/ 下的所有檔案與子目錄
     for root, dirs, files in os.walk(PHOTOS_DIR):
         rel_root = os.path.relpath(root, PHOTOS_DIR)
         
-        # 決定區塊標題與 Key
         if rel_root == ".":
-            # 根目錄剩餘檔案（理論上會被移動走）
-            section_title = "📸 相片總集錦"
+            section_title = "📸 未歸類相片集錦"
             section_key = "root"
             section_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         else:
-            # 子目錄名稱格式：YYYY-MM-DD_CommitMessage
             folder_name = os.path.basename(root)
             parts = folder_name.split("_", 1)
             if len(parts) == 2 and re.match(r'^\d{4}-\d{2}-\d{2}$', parts[0]):
@@ -140,7 +130,6 @@ def build_gallery_data():
                 photo_rel_path = os.path.join("photos", rel_root, filename).replace("\\", "/")
                 thumb_rel_path = os.path.join("thumbnails", rel_root, filename).replace("\\", "/")
                 
-                # 自動產生縮圖
                 full_photo_path = os.path.join(root, filename)
                 full_thumb_path = os.path.join(THUMBNAILS_DIR, rel_root, filename)
                 if not os.path.exists(full_thumb_path):
@@ -163,7 +152,6 @@ def build_gallery_data():
                 "photos": valid_photos
             }
 
-    # 按資料夾名稱/日期降序排序 (最新的放在最前面)
     sorted_keys = sorted(commits_map.keys(), reverse=True)
     sorted_commits = [commits_map[k] for k in sorted_keys]
     
@@ -171,11 +159,7 @@ def build_gallery_data():
 
 def main():
     ensure_dirs()
-    
-    # 1. 自動整理散落在 photos/ 根目錄的照片至子目錄
     organize_loose_photos()
-    
-    # 2. 掃描產生縮圖與 gallery-data.json
     commits = build_gallery_data()
     
     data = {

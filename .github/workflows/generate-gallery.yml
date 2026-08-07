@@ -35,10 +35,11 @@ jobs:
         run: |
           python scripts/generate_gallery.py
 
-      - name: Commit and Push changes
+      - name: Commit and Push generated thumbnails & data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 [Automated] 自動歸檔照片至日期目錄、生成縮圖與更新相簿 JSON"
+          commit_message: "🤖 [skip ci] [Automated] 自動歸檔照片至日期目錄、生成縮圖與更新相簿 JSON"
           file_pattern: "photos/** thumbnails/** gallery-data.json"
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions@github.com"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
