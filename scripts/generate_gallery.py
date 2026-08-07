@@ -21,14 +21,15 @@ def ensure_dirs():
     os.makedirs(THUMBNAILS_DIR, exist_ok=True)
 
 def sanitize_folder_name(name):
-    """將 Commit Message 清理為安全合法之子目錄名稱"""
+    """將 Commit Message 清理為適合作業系統與網址的乾淨子目錄名稱 (去除 Emoji 與空白)"""
     if not name:
-        return "Uncategorized"
-    clean = re.sub(r'[\/\\\:\*\?\"<>\|]', '_', name)
-    clean = clean.strip().strip('.')
-    if len(clean) > 50:
-        clean = clean[:50]
-    return clean or "Uncategorized"
+        return "Album"
+    # 移除非英數字、中文以外的特殊符號 (包含 Emoji、標點符號與空白)
+    clean = re.sub(r'[^\w\u4e00-\u9fff\-]', '_', name)
+    clean = re.sub(r'_+', '_', clean).strip('_')
+    if len(clean) > 40:
+        clean = clean[:40]
+    return clean or "Album"
 
 def generate_thumbnail(photo_path, thumb_path):
     if Image is None:
@@ -48,7 +49,7 @@ def generate_thumbnail(photo_path, thumb_path):
         print(f"Error generating thumbnail for {photo_path}: {e}")
 
 def organize_loose_photos():
-    """自動將散落在 photos/ 根目錄的照片移動至『YYYY-MM-DD_CommitMessage』子目錄下"""
+    """自動將散落在 photos/ 根目錄的照片移動至『YYYY-MM-DD_CleanFolderTitle』子目錄下"""
     if not os.path.exists(PHOTOS_DIR):
         return
 
@@ -109,7 +110,7 @@ def build_gallery_data():
         rel_root = os.path.relpath(root, PHOTOS_DIR)
         
         if rel_root == ".":
-            section_title = "📸 未歸類相片集錦"
+            section_title = "📸 相片總集錦"
             section_key = "root"
             section_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         else:

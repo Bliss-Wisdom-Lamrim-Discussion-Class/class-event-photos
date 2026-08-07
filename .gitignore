@@ -1,6 +1,7 @@
 # 依據需求排除非必要的檔案與目錄
 document/
 對話紀錄/
+.agents/
 
 # 作業系統暫存檔
 .DS_Store

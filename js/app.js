@@ -4,7 +4,7 @@
  * - Commit/Push Pagination with Commit Message as Title
  * - 4 Color Themes (Light, Dark, Vintage, Cyberpunk)
  * - Lightbox Fullscreen Photo Viewer
- * - Dynamic Thumbnail & Image Fallback Rendering
+ * - Dynamic Thumbnail & Image Fallback Rendering with Safe URL Encoding
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
 
+  // URL 安全轉碼（防止圖片路徑含有空白、Emoji 或中文字元導致 404 讀取失敗）
+  function safeUrl(url) {
+    if (!url) return '';
+    // 如果 URL 已經是全網址或相對路徑，處理編碼
+    const parts = url.split('/');
+    const encodedParts = parts.map(part => encodeURIComponent(part));
+    return encodedParts.join('/');
+  }
+
   // 初始化主題
   function initTheme() {
     applyTheme(state.currentTheme);
@@ -64,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 載入 JSON 資料
   async function loadGalleryData() {
     try {
-      const response = await fetch('gallery-data.json');
+      const response = await fetch('gallery-data.json?t=' + Date.now());
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -120,10 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let gridHtml = '<div class="photo-grid">';
     if (commit.photos && commit.photos.length > 0) {
       commit.photos.forEach((photo, pIdx) => {
+        const thumbUrl = safeUrl(photo.thumbnail_url);
         gridHtml += `
           <div class="photo-card" data-commit-idx="${commitIndex}" data-photo-idx="${pIdx}">
             <img 
-              src="${escapeHtml(photo.thumbnail_url)}" 
+              src="${escapeHtml(thumbUrl)}" 
               alt="${escapeHtml(photo.caption || photo.filename)}" 
               loading="lazy"
               onerror="this.onerror=null; this.parentElement.innerHTML='<div class=photo-fallback>🖼️<span>${escapeHtml(photo.filename)}</span></div>';"
@@ -228,12 +238,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!commit || !commit.photos || !commit.photos[photoIndex]) return;
 
     const photo = commit.photos[photoIndex];
-    lightboxImg.src = photo.photo_url;
+    const fullPhotoUrl = safeUrl(photo.photo_url);
+    const thumbPhotoUrl = safeUrl(photo.thumbnail_url);
+
+    lightboxImg.src = fullPhotoUrl;
     lightboxImg.alt = photo.caption || photo.filename;
 
-    // Fallback for full resolution photo load failure
     lightboxImg.onerror = function() {
-      this.src = photo.thumbnail_url;
+      this.src = thumbPhotoUrl;
     };
 
     lightboxTitle.textContent = photo.caption || photo.filename;
