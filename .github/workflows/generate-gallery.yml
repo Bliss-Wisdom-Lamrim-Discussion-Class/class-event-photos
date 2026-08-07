@@ -1,4 +1,4 @@
-name: Auto Generate Gallery Thumbnails & Data
+name: Auto Generate Gallery Thumbnails & Organize Folders
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 取得完整 git 歷史以解析 commit 紀錄
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -31,14 +31,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install Pillow
 
-      - name: Run Gallery Generator
+      - name: Run Gallery Generator & Organizer
         run: |
           python scripts/generate_gallery.py
 
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 [Automated] 自動生成照片縮圖與更新相簿 JSON 數據"
-          file_pattern: "thumbnails/* gallery-data.json"
+          commit_message: "🤖 [Automated] 自動歸檔照片至日期目錄、生成縮圖與更新相簿 JSON"
+          file_pattern: "photos/** thumbnails/** gallery-data.json"
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions@github.com"
