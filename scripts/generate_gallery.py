@@ -113,113 +113,100 @@ def organize_loose_photos():
         print(f"Moved: {src_path} -> {dst_path}")
 
 def build_gallery_data():
-    """解析 git log 取得真實 Commit 歷史順序，將最新 Commit 放在最上方"""
+    """直接用 git log --diff-filter=A 找出每個 Commit 新增的相簿資料夾，最新 Commit 排在最上方。"""
     if not os.path.exists(PHOTOS_DIR):
         return []
 
-    # 1. 取得所有相簿目錄 (folder_name -> full_path)
-    albums_dict = {}
-    if os.path.exists(PHOTOS_DIR):
-        for item in os.listdir(PHOTOS_DIR):
-            item_path = os.path.join(PHOTOS_DIR, item)
-            if os.path.isdir(item_path):
-                albums_dict[item] = item_path
+    # 強制台灣時區 (UTC+8)，使時間顯示正確
+    env = os.environ.copy()
+    env["TZ"] = "Asia/Taipei"
 
-    if not albums_dict:
-        return []
-
-    # 2. 透過 git log 取得真實 Commit 歷史 (從最新到最舊)
-    commits_list = []
-    processed_folders = set()
+    # 1. 用 git log 直接找出每個 commit 新增了哪些 photos/ 子目錄
+    #    輸出格式: COMMIT行 + 該 commit 新增的檔案/目錄列表
+    folder_to_commit = {}  # folder_name -> {hash, short_hash, date, message}
 
     try:
-        # 取得 commit hash, commit date, commit message
-        cmd = ["git", "log", "--pretty=format:%H|%h|%cd|%s", "--date=format:%Y-%m-%d %H:%M:%S"]
-        res = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        log_lines = res.stdout.strip().split("\n") if res.stdout.strip() else []
+        cmd = [
+            "git", "log",
+            "--diff-filter=A",          # 只看有「新增」檔案的 commit
+            "--name-only",              # 列出新增的檔案名稱
+            "--pretty=format:COMMIT|%H|%h|%cd|%s",
+            "--date=format:%Y-%m-%d %H:%M:%S",
+            "--", "photos/"             # 只看 photos/ 目錄
+        ]
+        res = subprocess.run(cmd, capture_output=True, text=True, check=True, env=env)
+        lines = res.stdout.strip().split("\n") if res.stdout.strip() else []
 
-        for line in log_lines:
-            if not line.strip():
+        current_commit = None
+        for line in lines:
+            line = line.strip()
+            if not line:
                 continue
-            parts = line.strip().split("|", 3)
-            if len(parts) < 4:
-                continue
-
-            c_hash, c_short, c_date, c_msg = parts[0], parts[1], parts[2], parts[3]
-            
-            # 跳過自動化腳本Commit
-            if c_msg.startswith("🤖") or "[skip ci]" in c_msg or "Automated" in c_msg:
-                continue
-
-            # 搜尋此 Commit Message 對應的相簿資料夾 (使用純文字比對防止 - 與 _ 差異造成不匹配)
-            raw_c_msg_clean = re.sub(r'[^\w\u4e00-\u9fff]', '', c_msg)
-            matched_folder = None
-            
-            for folder_name in albums_dict.keys():
-                if folder_name in processed_folders:
-                    continue
-                folder_clean = re.sub(r'[^\w\u4e00-\u9fff]', '', folder_name)
-                if raw_c_msg_clean and (raw_c_msg_clean in folder_clean or folder_clean in raw_c_msg_clean):
-                    matched_folder = folder_name
-                    break
-
-            if matched_folder:
-                folder_path = albums_dict[matched_folder]
-                processed_folders.add(matched_folder)
-
-                valid_photos = []
-                files = sorted(os.listdir(folder_path))
-                for filename in files:
-                    ext = os.path.splitext(filename)[1].lower()
-                    if ext in ALLOWED_EXTENSIONS and filename != ".gitkeep":
-                        full_photo_path = os.path.join(folder_path, filename)
-                        photo_rel_path = os.path.join("photos", matched_folder, filename).replace("\\", "/")
-                        thumb_rel_path = os.path.join("thumbnails", matched_folder, filename).replace("\\", "/")
-                        
-                        full_thumb_path = os.path.join(THUMBNAILS_DIR, matched_folder, filename)
-                        if not os.path.exists(full_thumb_path):
-                            generate_thumbnail(full_photo_path, full_thumb_path)
-                            
-                        valid_photos.append({
-                            "filename": filename,
-                            "photo_url": photo_rel_path,
-                            "thumbnail_url": thumb_rel_path,
-                            "caption": filename
-                        })
-
-                if valid_photos:
-                    commits_list.append({
-                        "commit_hash": c_hash,
-                        "short_hash": c_short,
-                        "author": "Contributor",
-                        "date": c_date,
-                        "commit_message": c_msg,
-                        "photos": valid_photos
-                    })
+            if line.startswith("COMMIT|"):
+                parts = line.split("|", 4)
+                if len(parts) == 5:
+                    _, c_hash, c_short, c_date, c_msg = parts
+                    # 跳過自動化 Commit
+                    if c_msg.startswith("🤖") or "[skip ci]" in c_msg or "Automated" in c_msg:
+                        current_commit = None
+                    else:
+                        current_commit = {
+                            "commit_hash": c_hash,
+                            "short_hash": c_short,
+                            "date": c_date,
+                            "commit_message": c_msg,
+                        }
+            elif current_commit and line.startswith("photos/"):
+                # 路徑格式: photos/<folder_name>/<filename>
+                parts = line.split("/")
+                if len(parts) >= 2:
+                    folder_name = parts[1]
+                    if folder_name and folder_name not in folder_to_commit:
+                        folder_to_commit[folder_name] = current_commit
     except Exception as e:
         print(f"Error fetching git log: {e}")
 
-    # 3. 若有未於 git log 中被匹配到的新目錄
-    for folder_name, folder_path in albums_dict.items():
-        if folder_name not in processed_folders:
-            parts = folder_name.split("_", 1)
-            section_title = parts[1] if len(parts) == 2 else folder_name
-            mtime = os.path.getmtime(folder_path)
-            section_date = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d %H:%M:%S")
+    # 2. 取得所有相簿目錄
+    albums_dict = {}
+    for item in os.listdir(PHOTOS_DIR):
+        item_path = os.path.join(PHOTOS_DIR, item)
+        if os.path.isdir(item_path):
+            albums_dict[item] = item_path
+
+    # 3. 依照 git log 的 commit 順序 (最新→最舊) 重新排列相簿
+    #    先建立 commit hash → [folders] 的映射，保留順序
+    seen_hashes = []
+    hash_to_folders = {}
+    for folder_name, commit_info in folder_to_commit.items():
+        c_hash = commit_info["commit_hash"]
+        if c_hash not in hash_to_folders:
+            seen_hashes.append(c_hash)
+            hash_to_folders[c_hash] = []
+        hash_to_folders[c_hash].append(folder_name)
+
+    commits_list = []
+    processed_folders = set()
+
+    for c_hash in seen_hashes:
+        commit_info = folder_to_commit[hash_to_folders[c_hash][0]]
+        for folder_name in hash_to_folders[c_hash]:
+            if folder_name not in albums_dict:
+                continue
+            processed_folders.add(folder_name)
+            folder_path = albums_dict[folder_name]
 
             valid_photos = []
-            files = sorted(os.listdir(folder_path))
-            for filename in files:
+            for filename in sorted(os.listdir(folder_path)):
                 ext = os.path.splitext(filename)[1].lower()
                 if ext in ALLOWED_EXTENSIONS and filename != ".gitkeep":
                     full_photo_path = os.path.join(folder_path, filename)
                     photo_rel_path = os.path.join("photos", folder_name, filename).replace("\\", "/")
                     thumb_rel_path = os.path.join("thumbnails", folder_name, filename).replace("\\", "/")
-                    
+
                     full_thumb_path = os.path.join(THUMBNAILS_DIR, folder_name, filename)
                     if not os.path.exists(full_thumb_path):
                         generate_thumbnail(full_photo_path, full_thumb_path)
-                        
+
                     valid_photos.append({
                         "filename": filename,
                         "photo_url": photo_rel_path,
@@ -229,16 +216,51 @@ def build_gallery_data():
 
             if valid_photos:
                 commits_list.append({
-                    "commit_hash": folder_name,
-                    "short_hash": folder_name[:8],
+                    "commit_hash": commit_info["commit_hash"],
+                    "short_hash": commit_info["short_hash"],
                     "author": "Contributor",
-                    "date": section_date,
-                    "commit_message": section_title,
+                    "date": commit_info["date"],
+                    "commit_message": commit_info["commit_message"],
                     "photos": valid_photos
                 })
 
-    # 4. 強制按日期時間 (date) 倒序排列 (最新時間如 11:09:56 排在 03:43:21 上方)
-    commits_list.sort(key=lambda x: x.get("date", ""), reverse=True)
+    # 4. 處理尚未被 git log 追蹤到的新目錄 (放最上方)
+    for folder_name, folder_path in albums_dict.items():
+        if folder_name in processed_folders:
+            continue
+        parts = folder_name.split("_", 1)
+        section_title = parts[1] if len(parts) == 2 else folder_name
+        mtime = os.path.getmtime(folder_path)
+        section_date = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d %H:%M:%S")
+
+        valid_photos = []
+        for filename in sorted(os.listdir(folder_path)):
+            ext = os.path.splitext(filename)[1].lower()
+            if ext in ALLOWED_EXTENSIONS and filename != ".gitkeep":
+                full_photo_path = os.path.join(folder_path, filename)
+                photo_rel_path = os.path.join("photos", folder_name, filename).replace("\\", "/")
+                thumb_rel_path = os.path.join("thumbnails", folder_name, filename).replace("\\", "/")
+
+                full_thumb_path = os.path.join(THUMBNAILS_DIR, folder_name, filename)
+                if not os.path.exists(full_thumb_path):
+                    generate_thumbnail(full_photo_path, full_thumb_path)
+
+                valid_photos.append({
+                    "filename": filename,
+                    "photo_url": photo_rel_path,
+                    "thumbnail_url": thumb_rel_path,
+                    "caption": filename
+                })
+
+        if valid_photos:
+            commits_list.insert(0, {
+                "commit_hash": folder_name,
+                "short_hash": folder_name[:8],
+                "author": "Contributor",
+                "date": section_date,
+                "commit_message": section_title,
+                "photos": valid_photos
+            })
 
     return commits_list
 
