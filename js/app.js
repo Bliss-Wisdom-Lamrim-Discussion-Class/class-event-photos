@@ -105,12 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // DOM Elements
-  const galleryContainer = document.getElementById('gallery-container');
   const albumIndexNav = document.getElementById('album-index-nav');
-  const themeButtons = document.querySelectorAll('.theme-btn');
-  const navHomeBtn = document.getElementById('nav-home-btn');
-  const brandHomeBtn = document.getElementById('brand-home-btn');
 
   // 載入 JSON 資料
   async function loadGalleryData() {
