@@ -1,0 +1,31 @@
+# 依據需求排除非必要的檔案與目錄
+document/
+對話紀錄/
+
+# 作業系統暫存檔
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Python 快取與暫存檔
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# IDE 與編輯器設定檔
+.vscode/
+.idea/
+*.swp
+*.tmp
+.antigravity/
+
+# 日誌與除錯紀錄
+*.log
+debug.log
+
+# 環境變數與私密設定檔
+.env
+.env.local

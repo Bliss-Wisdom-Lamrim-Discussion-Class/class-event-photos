@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub 相簿 - 自動縮圖與 Commit 分頁相簿</title>
+  <meta name="description" content="自動由 GitHub Actions 解析 Commit 歷史與圖片縮圖的響應式動態相簿" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- 頂部導覽列 Header -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#" class="brand">
+        <div class="brand-icon">📸</div>
+        <div>
+          <h1 class="brand-title">GitHub Photo Gallery</h1>
+          <div class="brand-subtitle">Automated Commit Album</div>
+        </div>
+      </a>
+
+      <!-- 4種主題切換器 Theme Switcher -->
+      <div class="theme-selector" role="group" aria-label="主題切換器">
+        <button class="theme-btn active" data-set-theme="light" title="淺色模式">☀️ 淺色</button>
+        <button class="theme-btn" data-set-theme="dark" title="深色模式">🌙 深色</button>
+        <button class="theme-btn" data-set-theme="vintage" title="復古模式">📜 復古</button>
+        <button class="theme-btn" data-set-theme="cyberpunk" title="賽博朋克">⚡ 賽博朋克</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主內容區域 Main Content -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- 相簿展演區 (依 Commit 分頁與渲染) -->
+      <div id="gallery-container">
+        <!-- JS 將自動填入相簿內容 -->
+      </div>
+
+      <!-- 分頁導覽元件 -->
+      <div id="pagination" class="pagination-wrapper">
+        <!-- JS 將自動填入分頁按鈕 -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox 全螢幕原圖彈窗 Modal -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <button id="lightbox-close" class="lightbox-close" title="關閉 (Esc)">&times;</button>
+    <button id="lightbox-prev" class="lightbox-prev" title="上一張 (←)">&lsaquo;</button>
+    <button id="lightbox-next" class="lightbox-next" title="下一張 (→)">&rsaquo;</button>
+
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrapper">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+      </div>
+      <div class="lightbox-meta">
+        <h3 id="lightbox-title" class="lightbox-title"></h3>
+        <p id="lightbox-subtext" class="lightbox-subtext"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 頁尾 Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Powered by GitHub Pages & GitHub Actions • Built with Vanilla Web Standards</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
