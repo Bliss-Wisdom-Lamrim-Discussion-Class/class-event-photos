@@ -26,23 +26,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryContainer = document.getElementById('gallery-container');
   const paginationContainer = document.getElementById('pagination');
   const themeButtons = document.querySelectorAll('.theme-btn');
+  const navHomeBtn = document.getElementById('nav-home-btn');
+  const brandHomeBtn = document.getElementById('brand-home-btn');
   
   // Lightbox DOM Elements
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxImgWrapper = document.getElementById('lightbox-img-wrapper');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxSubtext = document.getElementById('lightbox-subtext');
   const lightboxClose = document.getElementById('lightbox-close');
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
 
+  // Lightbox Zoom & Fit Control Elements
+  const zoomInBtn = document.getElementById('zoom-in-btn');
+  const zoomOutBtn = document.getElementById('zoom-out-btn');
+  const zoomResetBtn = document.getElementById('zoom-reset-btn');
+  const zoomFitBtn = document.getElementById('zoom-fit-btn');
+
+  // Lightbox Zoom & Pan Internal State
+  const zoomState = {
+    scale: 1,
+    panX: 0,
+    panY: 0,
+    isDragging: false,
+    startX: 0,
+    startY: 0,
+    isFullscreenFit: false
+  };
+
   // URL 安全轉碼（防止圖片路徑含有空白、Emoji 或中文字元導致 404 讀取失敗）
   function safeUrl(url) {
     if (!url) return '';
-    // 如果 URL 已經是全網址或相對路徑，處理編碼
     const parts = url.split('/');
     const encodedParts = parts.map(part => encodeURIComponent(part));
     return encodedParts.join('/');
+  }
+
+  // 回首頁按鈕導覽
+  function goToHomePage() {
+    state.currentPage = 1;
+    renderGallery();
+    renderPagination();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  if (navHomeBtn) navHomeBtn.addEventListener('click', goToHomePage);
+  if (brandHomeBtn) {
+    brandHomeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      goToHomePage();
+    });
   }
 
   // 初始化主題
@@ -215,12 +250,51 @@ document.addEventListener('DOMContentLoaded', () => {
     paginationContainer.appendChild(nextBtn);
   }
 
+  // Lightbox 縮放與移動控制 Transform Helper
+  function applyImageTransform() {
+    lightboxImg.style.transform = `translate(${zoomState.panX}px, ${zoomState.panY}px) scale(${zoomState.scale})`;
+    if (zoomState.scale > 1) {
+      lightboxImg.classList.add('zoomed');
+    } else {
+      lightboxImg.classList.remove('zoomed');
+    }
+  }
+
+  function resetZoom() {
+    zoomState.scale = 1;
+    zoomState.panX = 0;
+    zoomState.panY = 0;
+    zoomState.isDragging = false;
+    applyImageTransform();
+  }
+
+  function zoomIn() {
+    zoomState.scale = Math.min(zoomState.scale + 0.35, 4.0);
+    applyImageTransform();
+  }
+
+  function zoomOut() {
+    zoomState.scale = Math.max(zoomState.scale - 0.35, 0.6);
+    if (zoomState.scale <= 1) {
+      zoomState.panX = 0;
+      zoomState.panY = 0;
+    }
+    applyImageTransform();
+  }
+
+  function toggleFitMode() {
+    zoomState.isFullscreenFit = !zoomState.isFullscreenFit;
+    lightboxImg.classList.toggle('fullscreen-fit', zoomState.isFullscreenFit);
+    resetZoom();
+  }
+
   // Lightbox Modal Controls
   function openLightbox(commitIdx, photoIdx) {
     state.lightbox.isOpen = true;
     state.lightbox.commitIndex = commitIdx;
     state.lightbox.photoIndex = photoIdx;
 
+    resetZoom();
     updateLightboxContent();
     lightboxModal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -228,11 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeLightbox() {
     state.lightbox.isOpen = false;
+    resetZoom();
     lightboxModal.classList.remove('active');
     document.body.style.overflow = '';
   }
 
   function updateLightboxContent() {
+    resetZoom();
     const { commitIndex, photoIndex } = state.lightbox;
     const commit = state.commits[commitIndex];
     if (!commit || !commit.photos || !commit.photos[photoIndex]) return;
@@ -249,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     lightboxTitle.textContent = photo.caption || photo.filename;
-    lightboxSubtext.textContent = `Commit: ${commit.commit_message} (${commit.short_hash}) • ${photoIndex + 1} / ${commit.photos.length}`;
+    lightboxSubtext.textContent = `Commit: ${commit.commit_message} (${commit.short_hash}) • 照片 ${photoIndex + 1} / ${commit.photos.length}`;
   }
 
   function navigateLightbox(direction) {
@@ -264,10 +340,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Event Listeners for Lightbox
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
-  lightboxNext.addEventListener('click', () => navigateLightbox(1));
+  // Event Listeners for Lightbox Buttons
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+  if (lightboxNext) lightboxNext.addEventListener('click', () => navigateLightbox(1));
+  if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
+  if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
+  if (zoomResetBtn) zoomResetBtn.addEventListener('click', resetZoom);
+  if (zoomFitBtn) zoomFitBtn.addEventListener('click', toggleFitMode);
+
+  // 滑鼠滾輪縮放 (Wheel Zoom)
+  if (lightboxImgWrapper) {
+    lightboxImgWrapper.addEventListener('wheel', (e) => {
+      if (!state.lightbox.isOpen) return;
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? 0.2 : -0.2;
+      const newScale = Math.min(Math.max(zoomState.scale + delta, 0.6), 4.0);
+      zoomState.scale = newScale;
+      if (zoomState.scale <= 1) {
+        zoomState.panX = 0;
+        zoomState.panY = 0;
+      }
+      applyImageTransform();
+    }, { passive: false });
+  }
+
+  // 滑鼠按住拖曳移動 (Mouse Drag & Pan)
+  if (lightboxImg) {
+    lightboxImg.addEventListener('mousedown', (e) => {
+      if (zoomState.scale <= 1) return;
+      e.preventDefault();
+      zoomState.isDragging = true;
+      zoomState.startX = e.clientX - zoomState.panX;
+      zoomState.startY = e.clientY - zoomState.panY;
+      lightboxImg.classList.add('dragging');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!zoomState.isDragging) return;
+      e.preventDefault();
+      zoomState.panX = e.clientX - zoomState.startX;
+      zoomState.panY = e.clientY - zoomState.startY;
+      applyImageTransform();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (zoomState.isDragging) {
+        zoomState.isDragging = false;
+        lightboxImg.classList.remove('dragging');
+      }
+    });
+
+    // 雙擊直接重置/放大
+    lightboxImg.addEventListener('dblclick', () => {
+      if (zoomState.scale > 1) {
+        resetZoom();
+      } else {
+        zoomState.scale = 2.0;
+        applyImageTransform();
+      }
+    });
+  }
 
   lightboxModal.addEventListener('click', (e) => {
     if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {

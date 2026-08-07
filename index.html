@@ -20,12 +20,15 @@
         </div>
       </a>
 
-      <!-- 4種主題切換器 Theme Switcher -->
-      <div class="theme-selector" role="group" aria-label="主題切換器">
-        <button class="theme-btn active" data-set-theme="light" title="淺色模式">☀️ 淺色</button>
-        <button class="theme-btn" data-set-theme="dark" title="深色模式">🌙 深色</button>
-        <button class="theme-btn" data-set-theme="vintage" title="復古模式">📜 復古</button>
-        <button class="theme-btn" data-set-theme="cyberpunk" title="賽博朋克">⚡ 賽博朋克</button>
+      <!-- 主題切換器與回首頁按鈕 -->
+      <div class="header-controls">
+        <button id="nav-home-btn" class="nav-home-btn" title="返回第一頁並滾動至頂部">🏠 回首頁</button>
+        <div class="theme-selector" role="group" aria-label="主題切換器">
+          <button class="theme-btn active" data-set-theme="light" title="淺色模式">☀️ 淺色</button>
+          <button class="theme-btn" data-set-theme="dark" title="深色模式">🌙 深色</button>
+          <button class="theme-btn" data-set-theme="vintage" title="復古模式">📜 復古</button>
+          <button class="theme-btn" data-set-theme="cyberpunk" title="賽博朋克">⚡ 賽博朋克</button>
+        </div>
       </div>
     </div>
   </header>
@@ -49,17 +52,28 @@
 
   <!-- Lightbox 全螢幕原圖彈窗 Modal -->
   <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
-    <button id="lightbox-close" class="lightbox-close" title="關閉 (Esc)">&times;</button>
+    <!-- 頂部懸浮控制工具列 -->
+    <div class="lightbox-toolbar">
+      <div class="lightbox-toolbar-group">
+        <button id="zoom-in-btn" class="lightbox-tool-btn" title="放大照片 (+)">🔍+ 放大</button>
+        <button id="zoom-out-btn" class="lightbox-tool-btn" title="縮小照片 (-)">🔍- 縮小</button>
+        <button id="zoom-reset-btn" class="lightbox-tool-btn" title="重置 1:1 尺寸">↺ 重置</button>
+        <button id="zoom-fit-btn" class="lightbox-tool-btn" title="全螢幕/滿版切換">⛶ 滿版</button>
+      </div>
+      <button id="lightbox-close" class="lightbox-close-btn" title="關閉相片檢視器 (Esc)">✕ 關閉</button>
+    </div>
+
     <button id="lightbox-prev" class="lightbox-prev" title="上一張 (←)">&lsaquo;</button>
     <button id="lightbox-next" class="lightbox-next" title="下一張 (→)">&rsaquo;</button>
 
     <div class="lightbox-content">
-      <div class="lightbox-img-wrapper">
-        <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+      <div id="lightbox-img-wrapper" class="lightbox-img-wrapper">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="" draggable="false" />
       </div>
       <div class="lightbox-meta">
         <h3 id="lightbox-title" class="lightbox-title"></h3>
         <p id="lightbox-subtext" class="lightbox-subtext"></p>
+        <div class="lightbox-hint">💡 提示：可以使用滑鼠滾輪縮放照片，放大後可按住滑鼠拖曳移動，或按 Esc 鍵關閉</div>
       </div>
     </div>
   </div>
