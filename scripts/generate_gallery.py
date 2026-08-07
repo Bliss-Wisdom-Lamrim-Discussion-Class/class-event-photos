@@ -113,62 +113,43 @@ def organize_loose_photos():
         print(f"Moved: {src_path} -> {dst_path}")
 
 def build_gallery_data():
-    """掃描 photos/ 目錄及其子目錄，生成 gallery-data.json (最新相簿在最上方)"""
+    """掃描 photos/ 目錄及其子目錄，按 Commit / 上傳時間順序生成 (最新 Commit/Push 在最上方)"""
     if not os.path.exists(PHOTOS_DIR):
         return []
 
-    commits_map = {}
+    commits_list = []
     
-    for root, dirs, files in os.walk(PHOTOS_DIR):
-        rel_root = os.path.relpath(root, PHOTOS_DIR)
-        
-        # 跳過 photos 根目錄本身 (除非無任何子目錄)
-        if rel_root == ".":
-            continue
+    # 掃描 photos/ 下的所有子目錄
+    subdirs = []
+    for item in os.listdir(PHOTOS_DIR):
+        item_path = os.path.join(PHOTOS_DIR, item)
+        if os.path.isdir(item_path):
+            # 取目錄建立/修改時間
+            mtime = os.path.getmtime(item_path)
+            subdirs.append((item, item_path, mtime))
 
-        folder_name = os.path.basename(root)
+    # 按目錄建立時間 (Commit / Push 時間) 由最新到最舊排序 (reverse=True)
+    subdirs.sort(key=lambda x: x[2], reverse=True)
+
+    for folder_name, folder_path, mtime in subdirs:
         parts = folder_name.split("_", 1)
         if len(parts) == 2 and re.match(r'^\d{4}-\d{2}-\d{2}$', parts[0]):
             section_date = f"{parts[0]} 00:00:00"
             section_title = parts[1]
         else:
-            section_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            section_date = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d %H:%M:%S")
             section_title = folder_name
-        section_key = folder_name
-
-        # 從標題解析真實活動日期時間戳記 (例如 20170907 -> 2017-09-07, 106_8_3 -> 民國106年/2017-08-03)
-        sort_timestamp = 0
-        date_match = re.search(r'(20\d{2})(\d{2})(\d{2})', section_title)
-        if date_match:
-            try:
-                dt = datetime(int(date_match.group(1)), int(date_match.group(2)), int(date_match.group(3)))
-                sort_timestamp = dt.timestamp()
-            except Exception:
-                pass
-        else:
-            roc_match = re.search(r'106_(\d+)_(\d+)', section_title)
-            if roc_match:
-                try:
-                    dt = datetime(2017, int(roc_match.group(1)), int(roc_match.group(2)))
-                    sort_timestamp = dt.timestamp()
-                except Exception:
-                    pass
 
         valid_photos = []
-        max_photo_mtime = 0
-
-        for filename in sorted(files):
+        files = sorted(os.listdir(folder_path))
+        for filename in files:
             ext = os.path.splitext(filename)[1].lower()
             if ext in ALLOWED_EXTENSIONS and filename != ".gitkeep":
-                full_photo_path = os.path.join(root, filename)
-                photo_mtime = os.path.getmtime(full_photo_path)
-                if photo_mtime > max_photo_mtime:
-                    max_photo_mtime = photo_mtime
-
-                photo_rel_path = os.path.join("photos", rel_root, filename).replace("\\", "/")
-                thumb_rel_path = os.path.join("thumbnails", rel_root, filename).replace("\\", "/")
+                full_photo_path = os.path.join(folder_path, filename)
+                photo_rel_path = os.path.join("photos", folder_name, filename).replace("\\", "/")
+                thumb_rel_path = os.path.join("thumbnails", folder_name, filename).replace("\\", "/")
                 
-                full_thumb_path = os.path.join(THUMBNAILS_DIR, rel_root, filename)
+                full_thumb_path = os.path.join(THUMBNAILS_DIR, folder_name, filename)
                 if not os.path.exists(full_thumb_path):
                     generate_thumbnail(full_photo_path, full_thumb_path)
                     
@@ -180,24 +161,18 @@ def build_gallery_data():
                 })
 
         if valid_photos:
-            final_sort_key = sort_timestamp or max_photo_mtime or os.path.getmtime(root)
-            # 使用精確的時間戳記 (包含時、分、秒) 生成日期字串，避免顯示 00:00:00
-            formatted_date = datetime.fromtimestamp(final_sort_key).strftime("%Y-%m-%d %H:%M:%S")
-            
-            commits_map[section_key] = {
-                "commit_hash": section_key,
-                "short_hash": section_key[:8] if len(section_key) >= 8 else section_key,
+            formatted_date = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d %H:%M:%S")
+            commits_list.append({
+                "commit_hash": folder_name,
+                "short_hash": folder_name[:8] if len(folder_name) >= 8 else folder_name,
                 "author": "Contributor",
                 "date": formatted_date,
-                "mtime": final_sort_key,
+                "mtime": mtime,
                 "commit_message": section_title,
                 "photos": valid_photos
-            }
-
-    # 依照相簿照片/目錄最新修改時間 (mtime) 由最新到最舊 (reverse=True) 排序
-    sorted_commits = sorted(commits_map.values(), key=lambda x: x.get("mtime", 0), reverse=True)
-    
-    return sorted_commits
+            })
+            
+    return commits_list
 
 def main():
     ensure_dirs()
