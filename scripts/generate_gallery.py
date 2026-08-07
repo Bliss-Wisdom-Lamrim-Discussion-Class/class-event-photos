@@ -162,13 +162,16 @@ def build_gallery_data():
                 })
 
         if valid_photos:
-            folder_mtime = max_photo_mtime or os.path.getmtime(root)
+            final_sort_key = sort_timestamp or max_photo_mtime or os.path.getmtime(root)
+            # 使用精確的時間戳記 (包含時、分、秒) 生成日期字串，避免顯示 00:00:00
+            formatted_date = datetime.fromtimestamp(final_sort_key).strftime("%Y-%m-%d %H:%M:%S")
+            
             commits_map[section_key] = {
                 "commit_hash": section_key,
                 "short_hash": section_key[:8] if len(section_key) >= 8 else section_key,
                 "author": "Contributor",
-                "date": section_date,
-                "mtime": folder_mtime,
+                "date": formatted_date,
+                "mtime": final_sort_key,
                 "commit_message": section_title,
                 "photos": valid_photos
             }
