@@ -1,13 +1,12 @@
 {
-  "updated_at": "2026-08-07T03:37:26Z",
+  "updated_at": "2026-08-07T03:43:25Z",
   "total_commits": 2,
   "commits": [
     {
       "commit_hash": "2026-08-07_📸 20170907 班級活動精彩相片集錦",
       "short_hash": "2026-08-",
       "author": "Contributor",
-      "date": "2026-08-07 03:37:22",
-      "mtime": 1786073842.169406,
+      "date": "2026-08-07 03:43:21",
       "commit_message": "📸 20170907 班級活動精彩相片集錦",
       "photos": [
         {
@@ -109,12 +108,11 @@
       ]
     },
     {
-      "commit_hash": "2026-08-07_106_8_3-9_7日幸福與智慧課程",
-      "short_hash": "2026-08-",
+      "commit_hash": "f64f11a429f4eedfc55a4feb8095853969f30655",
+      "short_hash": "f64f11a",
       "author": "Contributor",
-      "date": "2026-08-07 03:37:22",
-      "mtime": 1786073842.1604059,
-      "commit_message": "106_8_3-9_7日幸福與智慧課程",
+      "date": "2026-08-07 11:09:56",
+      "commit_message": "106/8/3-9/7日幸福與智慧課程",
       "photos": [
         {
           "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg",
