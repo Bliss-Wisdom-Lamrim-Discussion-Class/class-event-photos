@@ -1,300 +1,30 @@
 {
-  "updated_at": "2026-08-07T04:46:07Z",
+  "updated_at": "2026-08-07T05:52:04Z",
   "total_commits": 3,
   "commits": [
     {
-      "commit_hash": "2026-08-07_20170921第八堂課_法寶加持",
-      "short_hash": "2026-08-",
+      "commit_hash": "aa7b62d20111217e748d8416c07e596d9aaaf037",
+      "short_hash": "aa7b62d",
       "author": "Contributor",
-      "date": "2026-08-07 04:46:02",
-      "commit_message": "20170921第八堂課_法寶加持",
-      "photos": [
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_1.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_1.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_1.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_1.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_10.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_10.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_10.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_10.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_11.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_11.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_11.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_11.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_12.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_12.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_12.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_12.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_13.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_13.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_13.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_13.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_14.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_14.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_14.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_14.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_15.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_15.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_15.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_15.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_16.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_16.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_16.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_16.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_17.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_17.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_17.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_17.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_18.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_18.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_18.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_18.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_2.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_2.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_2.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_2.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_3.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_3.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_3.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_3.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_4.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_4.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_4.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_4.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_5.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_5.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_5.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_5.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_6.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_6.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_6.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_6.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_7.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_7.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_7.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_7.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_8.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_8.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_8.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_8.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_9.jpg",
-          "photo_url": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_9.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_9.jpg",
-          "caption": "LINE_ALBUM_20170921第八堂課 法寶加持_260807_9.jpg"
-        }
-      ]
+      "date": "2026-08-07 12:03:37",
+      "commit_message": "20170921第八堂課 法寶加持",
+      "folder_name": "2026-08-07_20170921第八堂課_法寶加持",
+      "sub_data_url": "photos/2026-08-07_20170921第八堂課_法寶加持/gallery-data.json",
+      "photo_count": 18,
+      "cover_photo": "photos/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_1.jpg",
+      "cover_thumbnail": "thumbnails/2026-08-07_20170921第八堂課_法寶加持/LINE_ALBUM_20170921第八堂課 法寶加持_260807_1.jpg"
     },
     {
-      "commit_hash": "2026-08-07_106_8_3-9_7日幸福與智慧課程",
-      "short_hash": "2026-08-",
+      "commit_hash": "f64f11a429f4eedfc55a4feb8095853969f30655",
+      "short_hash": "f64f11a",
       "author": "Contributor",
-      "date": "2026-08-07 04:46:02",
-      "commit_message": "106_8_3-9_7日幸福與智慧課程",
-      "photos": [
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_10.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_10.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_10.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_10.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_11.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_11.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_11.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_11.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_12.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_12.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_12.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_12.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_13.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_13.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_13.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_13.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_14.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_14.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_14.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_14.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_15.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_15.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_15.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_15.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_16.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_16.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_16.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_16.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_17.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_17.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_17.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_17.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_18.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_18.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_18.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_18.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_19.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_19.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_19.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_19.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_2.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_2.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_2.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_2.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_20.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_20.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_20.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_20.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_21.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_21.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_21.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_21.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_22.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_22.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_22.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_22.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_23.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_23.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_23.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_23.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_24.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_24.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_24.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_24.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_25.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_25.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_25.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_25.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_26.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_26.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_26.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_26.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_27.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_27.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_27.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_27.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_28.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_28.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_28.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_28.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_3.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_3.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_3.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_3.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_4.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_4.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_4.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_4.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_5.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_5.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_5.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_5.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_6.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_6.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_6.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_6.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_7.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_7.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_7.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_7.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_8.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_8.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_8.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_8.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_9.jpg",
-          "photo_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_9.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_9.jpg",
-          "caption": "LINE_ALBUM_10683-97日幸福與智慧課程_260807_9.jpg"
-        }
-      ]
+      "date": "2026-08-07 11:09:56",
+      "commit_message": "106/8/3-9/7日幸福與智慧課程",
+      "folder_name": "2026-08-07_106_8_3-9_7日幸福與智慧課程",
+      "sub_data_url": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/gallery-data.json",
+      "photo_count": 28,
+      "cover_photo": "photos/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg",
+      "cover_thumbnail": "thumbnails/2026-08-07_106_8_3-9_7日幸福與智慧課程/LINE_ALBUM_10683-97日幸福與智慧課程_260807_1.jpg"
     },
     {
       "commit_hash": "588414d137352bfd9ef2142e88fb5911c9449082",
@@ -302,104 +32,11 @@
       "author": "Contributor",
       "date": "2026-08-07 09:28:31",
       "commit_message": "📸 20170907 班級活動精彩相片集錦",
-      "photos": [
-        {
-          "filename": "LINE_ALBUM_20170907_260807_1.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_1.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_1.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_1.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_10.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_10.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_10.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_10.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_11.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_11.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_11.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_11.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_12.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_12.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_12.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_12.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_13.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_13.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_13.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_13.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_14.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_14.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_14.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_14.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_15.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_15.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_15.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_15.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_16.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_16.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_16.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_16.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_2.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_2.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_2.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_2.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_3.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_3.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_3.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_3.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_4.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_4.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_4.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_4.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_5.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_5.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_5.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_5.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_6.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_6.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_6.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_6.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_7.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_7.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_7.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_7.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_8.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_8.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_8.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_8.jpg"
-        },
-        {
-          "filename": "LINE_ALBUM_20170907_260807_9.jpg",
-          "photo_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_9.jpg",
-          "thumbnail_url": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_9.jpg",
-          "caption": "LINE_ALBUM_20170907_260807_9.jpg"
-        }
-      ]
+      "folder_name": "2026-08-07_📸 20170907 班級活動精彩相片集錦",
+      "sub_data_url": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/gallery-data.json",
+      "photo_count": 16,
+      "cover_photo": "photos/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_1.jpg",
+      "cover_thumbnail": "thumbnails/2026-08-07_📸 20170907 班級活動精彩相片集錦/LINE_ALBUM_20170907_260807_1.jpg"
     }
   ]
 }
