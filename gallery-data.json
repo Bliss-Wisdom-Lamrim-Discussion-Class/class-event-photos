@@ -1,7 +1,19 @@
 {
-  "updated_at": "2026-08-07T06:21:10Z",
-  "total_commits": 4,
+  "updated_at": "2026-08-14T02:35:06Z",
+  "total_commits": 5,
   "commits": [
+    {
+      "commit_hash": "5d1946d73482b9eb158d6736d6469384c503af2c",
+      "short_hash": "5d1946d",
+      "author": "Contributor",
+      "date": "2026-08-14 10:30:14",
+      "commit_message": "2017/12/14 慈心週-里仁",
+      "folder_name": "[2026-08-14_10-30-14]2017_12_14_慈心週-里仁",
+      "sub_data_url": "photos/[2026-08-14_10-30-14]2017_12_14_慈心週-里仁/gallery-data.json",
+      "photo_count": 30,
+      "cover_photo": "photos/[2026-08-14_10-30-14]2017_12_14_慈心週-里仁/LINE_ALBUM_20171214 慈心週-里仁_260814_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-14_10-30-14]2017_12_14_慈心週-里仁/LINE_ALBUM_20171214 慈心週-里仁_260814_1.jpg"
+    },
     {
       "commit_hash": "d1edca00c25b95bcc1b6626ee0cb83f5bb506c5d",
       "short_hash": "d1edca0",
