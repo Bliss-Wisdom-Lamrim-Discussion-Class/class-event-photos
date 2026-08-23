@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:07:54Z",
-  "total_commits": 14,
+  "updated_at": "2026-08-23T13:08:30Z",
+  "total_commits": 15,
   "commits": [
     {
-      "commit_hash": "local_1787490471",
+      "commit_hash": "local_1787490504",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:07:51",
+      "date": "2026-08-23 13:08:24",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "0fc74adc06352ae84b754a39db52e81a46baac7f",
+      "short_hash": "0fc74ad",
+      "author": "Contributor",
+      "date": "2026-08-23 21:08:05",
+      "commit_message": "20180818里仁20周年養心肝果汁",
+      "folder_name": "[2026-08-23_21-08-05]20180818里仁20周年養心肝果汁",
+      "sub_data_url": "photos/[2026-08-23_21-08-05]20180818里仁20周年養心肝果汁/gallery-data.json",
+      "photo_count": 26,
+      "cover_photo": "photos/[2026-08-23_21-08-05]20180818里仁20周年養心肝果汁/LINE_ALBUM_20180818里仁20周年養心肝果汁_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-08-05]20180818里仁20周年養心肝果汁/LINE_ALBUM_20180818里仁20周年養心肝果汁_260823_1.jpg"
     },
     {
       "commit_hash": "7f9d4b29f2929e3705570ccd42e1189bc692024d",
