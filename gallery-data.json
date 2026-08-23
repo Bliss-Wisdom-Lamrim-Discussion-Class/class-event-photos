@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:40:26Z",
-  "total_commits": 57,
+  "updated_at": "2026-08-23T13:41:19Z",
+  "total_commits": 58,
   "commits": [
     {
-      "commit_hash": "local_1787492420",
+      "commit_hash": "local_1787492474",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:40:20",
+      "date": "2026-08-23 13:41:14",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "7be4961c399c7380c8b661f2ad03d279fc4d1a79",
+      "short_hash": "7be4961",
+      "author": "Contributor",
+      "date": "2026-08-23 21:40:34",
+      "commit_message": "JOMO COFFEE開幕暨老闆講唱會",
+      "folder_name": "[2026-08-23_21-40-34]JOMO_COFFEE開幕暨老闆講唱會",
+      "sub_data_url": "photos/[2026-08-23_21-40-34]JOMO_COFFEE開幕暨老闆講唱會/gallery-data.json",
+      "photo_count": 1,
+      "cover_photo": "photos/[2026-08-23_21-40-34]JOMO_COFFEE開幕暨老闆講唱會/LINE_ALBUM_JOMO COFFEE開幕暨老闆講唱會_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-40-34]JOMO_COFFEE開幕暨老闆講唱會/LINE_ALBUM_JOMO COFFEE開幕暨老闆講唱會_260823_1.jpg"
     },
     {
       "commit_hash": "9ecab68927fe95b2d7fd1f821701abc7dc699345",
