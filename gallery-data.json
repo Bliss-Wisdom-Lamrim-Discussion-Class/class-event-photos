@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:19:59Z",
-  "total_commits": 33,
+  "updated_at": "2026-08-23T13:20:38Z",
+  "total_commits": 34,
   "commits": [
     {
-      "commit_hash": "local_1787491196",
+      "commit_hash": "local_1787491232",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:19:56",
+      "date": "2026-08-23 13:20:32",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "7768b379f52619ab96147601b2c30af95e6b8fce",
+      "short_hash": "7768b37",
+      "author": "Contributor",
+      "date": "2026-08-23 21:20:06",
+      "commit_message": "8/10藥師法會+廣供+里仁感恩慶",
+      "folder_name": "[2026-08-23_21-20-06]8_10藥師法會_廣供_里仁感恩慶",
+      "sub_data_url": "photos/[2026-08-23_21-20-06]8_10藥師法會_廣供_里仁感恩慶/gallery-data.json",
+      "photo_count": 42,
+      "cover_photo": "photos/[2026-08-23_21-20-06]8_10藥師法會_廣供_里仁感恩慶/LINE_ALBUM_810藥師法會+廣供+里仁感恩慶_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-20-06]8_10藥師法會_廣供_里仁感恩慶/LINE_ALBUM_810藥師法會+廣供+里仁感恩慶_260823_1.jpg"
     },
     {
       "commit_hash": "8e281226942f246815fbc17b26e99b2b6e8a008b",
