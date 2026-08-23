@@ -1,13 +1,25 @@
 {
-  "updated_at": "2026-08-23T12:55:56Z",
-  "total_commits": 7,
+  "updated_at": "2026-08-23T12:59:43Z",
+  "total_commits": 8,
   "commits": [
     {
-      "commit_hash": "78de000ac3a4ddf8cc1e1f077d2768e99926486a",
-      "short_hash": "78de000",
+      "commit_hash": "local_1787489980",
+      "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 20:41:32",
-      "commit_message": "2018/03/10 #1",
+      "date": "2026-08-23 12:59:40",
+      "commit_message": "2018_03_10",
+      "folder_name": "[2026-08-23_20-59-07]2018_03_10",
+      "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
+      "photo_count": 135,
+      "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "be0d2056c21c396fbe039fe76fb84a1b6728f866",
+      "short_hash": "be0d205",
+      "author": "Contributor",
+      "date": "2026-08-23 20:59:07",
+      "commit_message": "2018/03/10",
       "folder_name": "[2026-08-23_20-41-32]2018_03_10_1",
       "sub_data_url": "photos/[2026-08-23_20-41-32]2018_03_10_1/gallery-data.json",
       "photo_count": 11,
