@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:24:25Z",
-  "total_commits": 39,
+  "updated_at": "2026-08-23T13:25:11Z",
+  "total_commits": 40,
   "commits": [
     {
-      "commit_hash": "local_1787491459",
+      "commit_hash": "local_1787491508",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:24:19",
+      "date": "2026-08-23 13:25:08",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "c8e3c5c4cd3319119813f1b3bcd2f8e5cf9f67c8",
+      "short_hash": "c8e3c5c",
+      "author": "Contributor",
+      "date": "2026-08-23 21:24:34",
+      "commit_message": "20191128 發心大課 _無憂花學堂 江宏志",
+      "folder_name": "[2026-08-23_21-24-34]20191128_發心大課_無憂花學堂_江宏志",
+      "sub_data_url": "photos/[2026-08-23_21-24-34]20191128_發心大課_無憂花學堂_江宏志/gallery-data.json",
+      "photo_count": 9,
+      "cover_photo": "photos/[2026-08-23_21-24-34]20191128_發心大課_無憂花學堂_江宏志/LINE_ALBUM_20191128 發心大課 _無憂花學堂 江宏志_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-24-34]20191128_發心大課_無憂花學堂_江宏志/LINE_ALBUM_20191128 發心大課 _無憂花學堂 江宏志_260823_1.jpg"
     },
     {
       "commit_hash": "fda491c79b841d07b03a8c0aa7357b60f6e85b25",
