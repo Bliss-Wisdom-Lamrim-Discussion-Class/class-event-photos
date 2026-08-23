@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:16:31Z",
-  "total_commits": 28,
+  "updated_at": "2026-08-23T13:17:15Z",
+  "total_commits": 29,
   "commits": [
     {
-      "commit_hash": "local_1787490985",
+      "commit_hash": "local_1787491029",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:16:25",
+      "date": "2026-08-23 13:17:09",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "6a93c0e56374bba0f6f26c973d63cefaa4288706",
+      "short_hash": "6a93c0e",
+      "author": "Contributor",
+      "date": "2026-08-23 21:16:45",
+      "commit_message": "2019/4/11企業班+青廣班：合班廣供",
+      "folder_name": "[2026-08-23_21-16-45]2019_4_11企業班_青廣班_合班廣供",
+      "sub_data_url": "photos/[2026-08-23_21-16-45]2019_4_11企業班_青廣班_合班廣供/gallery-data.json",
+      "photo_count": 53,
+      "cover_photo": "photos/[2026-08-23_21-16-45]2019_4_11企業班_青廣班_合班廣供/LINE_ALBUM_2019411企業班+青廣班：合班廣供_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-16-45]2019_4_11企業班_青廣班_合班廣供/LINE_ALBUM_2019411企業班+青廣班：合班廣供_260823_1.jpg"
     },
     {
       "commit_hash": "11a316c39b4e41b6b4f675d3fa6f909e114f8a11",
