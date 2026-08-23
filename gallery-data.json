@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:46:36Z",
-  "total_commits": 64,
+  "updated_at": "2026-08-23T13:47:36Z",
+  "total_commits": 65,
   "commits": [
     {
-      "commit_hash": "local_1787492791",
+      "commit_hash": "local_1787492850",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:46:31",
+      "date": "2026-08-23 13:47:30",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "246e4270d7f6a40bc98ace76d4dc5456d4ee5ee2",
+      "short_hash": "246e427",
+      "author": "Contributor",
+      "date": "2026-08-23 21:46:52",
+      "commit_message": "2021/12/23掃塵除垢",
+      "folder_name": "[2026-08-23_21-46-52]2021_12_23掃塵除垢",
+      "sub_data_url": "photos/[2026-08-23_21-46-52]2021_12_23掃塵除垢/gallery-data.json",
+      "photo_count": 14,
+      "cover_photo": "photos/[2026-08-23_21-46-52]2021_12_23掃塵除垢/LINE_ALBUM_20211223掃塵除垢_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-46-52]2021_12_23掃塵除垢/LINE_ALBUM_20211223掃塵除垢_260823_1.jpg"
     },
     {
       "commit_hash": "955e21b879b3a017ee4fb89f05382fd5ba70ec0a",
