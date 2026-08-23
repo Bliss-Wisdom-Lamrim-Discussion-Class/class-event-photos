@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:09:08Z",
-  "total_commits": 16,
+  "updated_at": "2026-08-23T13:09:44Z",
+  "total_commits": 17,
   "commits": [
     {
-      "commit_hash": "local_1787490544",
+      "commit_hash": "local_1787490579",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:09:04",
+      "date": "2026-08-23 13:09:39",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "46ee1b187fb47575c12952bcf60996dd25e10e67",
+      "short_hash": "46ee1b1",
+      "author": "Contributor",
+      "date": "2026-08-23 21:09:17",
+      "commit_message": "2018/10/21淨源茶場",
+      "folder_name": "[2026-08-23_21-09-17]2018_10_21淨源茶場",
+      "sub_data_url": "photos/[2026-08-23_21-09-17]2018_10_21淨源茶場/gallery-data.json",
+      "photo_count": 15,
+      "cover_photo": "photos/[2026-08-23_21-09-17]2018_10_21淨源茶場/LINE_ALBUM_20181021淨源茶場_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-09-17]2018_10_21淨源茶場/LINE_ALBUM_20181021淨源茶場_260823_1.jpg"
     },
     {
       "commit_hash": "bd253db634a559d0943a5bc41de6d5dfd5bf045b",
