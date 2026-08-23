@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:22:10Z",
-  "total_commits": 36,
+  "updated_at": "2026-08-23T13:22:57Z",
+  "total_commits": 37,
   "commits": [
     {
-      "commit_hash": "local_1787491323",
+      "commit_hash": "local_1787491372",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:22:03",
+      "date": "2026-08-23 13:22:52",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "fdedbe05c0179b59ea987bd0912202fc98cf725e",
+      "short_hash": "fdedbe0",
+      "author": "Contributor",
+      "date": "2026-08-23 21:22:22",
+      "commit_message": "1081012鳳山寺義工",
+      "folder_name": "[2026-08-23_21-22-22]1081012鳳山寺義工",
+      "sub_data_url": "photos/[2026-08-23_21-22-22]1081012鳳山寺義工/gallery-data.json",
+      "photo_count": 72,
+      "cover_photo": "photos/[2026-08-23_21-22-22]1081012鳳山寺義工/LINE_ALBUM_1081012鳳山寺義工_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-22-22]1081012鳳山寺義工/LINE_ALBUM_1081012鳳山寺義工_260823_1.jpg"
     },
     {
       "commit_hash": "ded0f1f1df14930d2d9fc5c1cd349946916abd3b",
