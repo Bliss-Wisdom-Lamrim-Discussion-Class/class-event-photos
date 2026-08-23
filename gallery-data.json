@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:11:08Z",
-  "total_commits": 19,
+  "updated_at": "2026-08-23T13:11:53Z",
+  "total_commits": 20,
   "commits": [
     {
-      "commit_hash": "local_1787490663",
+      "commit_hash": "local_1787490707",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:11:03",
+      "date": "2026-08-23 13:11:47",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "f0e54c445c696cb1736330cabe636073e50f2582",
+      "short_hash": "f0e54c4",
+      "author": "Contributor",
+      "date": "2026-08-23 21:11:20",
+      "commit_message": "20181110八關齋戒",
+      "folder_name": "[2026-08-23_21-11-20]20181110八關齋戒",
+      "sub_data_url": "photos/[2026-08-23_21-11-20]20181110八關齋戒/gallery-data.json",
+      "photo_count": 39,
+      "cover_photo": "photos/[2026-08-23_21-11-20]20181110八關齋戒/LINE_ALBUM_20181110八關齋戒_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-11-20]20181110八關齋戒/LINE_ALBUM_20181110八關齋戒_260823_1.jpg"
     },
     {
       "commit_hash": "bcf5dc8e09fbe7c9cbb8638bb67a86d527c1282f",
