@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:15:12Z",
-  "total_commits": 26,
+  "updated_at": "2026-08-23T13:15:50Z",
+  "total_commits": 27,
   "commits": [
     {
-      "commit_hash": "local_1787490907",
+      "commit_hash": "local_1787490945",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:15:07",
+      "date": "2026-08-23 13:15:45",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "50bf6fd1110523619747468507364a684563d977",
+      "short_hash": "50bf6fd",
+      "author": "Contributor",
+      "date": "2026-08-23 21:15:27",
+      "commit_message": "108/2/17心靈提升營",
+      "folder_name": "[2026-08-23_21-15-27]108_2_17心靈提升營",
+      "sub_data_url": "photos/[2026-08-23_21-15-27]108_2_17心靈提升營/gallery-data.json",
+      "photo_count": 9,
+      "cover_photo": "photos/[2026-08-23_21-15-27]108_2_17心靈提升營/LINE_ALBUM_108217心靈提升營_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-15-27]108_2_17心靈提升營/LINE_ALBUM_108217心靈提升營_260823_1.jpg"
     },
     {
       "commit_hash": "6e3c11e0a1ac4c635d818bc0dca6f7910b377650",
