@@ -1,18 +1,30 @@
 {
-  "updated_at": "2026-08-23T13:21:21Z",
-  "total_commits": 35,
+  "updated_at": "2026-08-23T13:22:10Z",
+  "total_commits": 36,
   "commits": [
     {
-      "commit_hash": "local_1787491276",
+      "commit_hash": "local_1787491323",
       "short_hash": "local",
       "author": "Contributor",
-      "date": "2026-08-23 13:21:16",
+      "date": "2026-08-23 13:22:03",
       "commit_message": "2018_03_10",
       "folder_name": "[2026-08-23_20-59-07]2018_03_10",
       "sub_data_url": "photos/[2026-08-23_20-59-07]2018_03_10/gallery-data.json",
       "photo_count": 135,
       "cover_photo": "photos/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg",
       "cover_thumbnail": "thumbnails/[2026-08-23_20-59-07]2018_03_10/LINE_ALBUM_20180310_260823_1.jpg"
+    },
+    {
+      "commit_hash": "ded0f1f1df14930d2d9fc5c1cd349946916abd3b",
+      "short_hash": "ded0f1f",
+      "author": "Contributor",
+      "date": "2026-08-23 21:21:34",
+      "commit_message": "9/27 聯誼+宇宙不同演唱會",
+      "folder_name": "[2026-08-23_21-21-34]9_27_聯誼_宇宙不同演唱會",
+      "sub_data_url": "photos/[2026-08-23_21-21-34]9_27_聯誼_宇宙不同演唱會/gallery-data.json",
+      "photo_count": 72,
+      "cover_photo": "photos/[2026-08-23_21-21-34]9_27_聯誼_宇宙不同演唱會/LINE_ALBUM_927 聯誼+宇宙不同演唱會_260823_1.jpg",
+      "cover_thumbnail": "thumbnails/[2026-08-23_21-21-34]9_27_聯誼_宇宙不同演唱會/LINE_ALBUM_927 聯誼+宇宙不同演唱會_260823_1.jpg"
     },
     {
       "commit_hash": "df8c90f970860ba2075eeda93fa9d44bd7a620c2",
